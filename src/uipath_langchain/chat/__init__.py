@@ -13,6 +13,10 @@ Instead, all exports are loaded on-demand when first accessed.
 
 
 def __getattr__(name):
+    if name == "UiPathBaseLLMClient":
+        from uipath_langchain_client.base_client import UiPathBaseLLMClient
+
+        return UiPathBaseLLMClient
     if name == "UiPathChat":
         from uipath_langchain_client.clients.openai import UiPathAzureChatOpenAI
 

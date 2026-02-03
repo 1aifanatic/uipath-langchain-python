@@ -7,7 +7,8 @@ from langgraph.constants import END, START
 from langgraph.graph import StateGraph
 from pydantic import BaseModel
 from uipath.platform.guardrails import BaseGuardrail
-from uipath_langchain_client.base_client import UiPathBaseLLMClient
+
+from uipath_langchain.chat import UiPathBaseLLMClient
 
 from ..guardrails.actions import GuardrailAction
 from .guardrails.guardrails_subgraph import (

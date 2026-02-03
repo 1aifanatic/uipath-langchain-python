@@ -1,8 +1,8 @@
 """Factory for creating model payload handlers."""
 
 from langchain_core.language_models import BaseChatModel
-from uipath_langchain_client.base_client import UiPathBaseLLMClient
 
+from uipath_langchain.chat import UiPathBaseLLMClient
 from uipath_langchain.chat.types import (
     APIFlavor,
     LLMProvider,
