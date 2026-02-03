@@ -169,6 +169,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/ac/27/9df785d3f94df9ac72f43ee9e14b8120b37d992b18f4952774ed46145022/anthropic-0.77.0-py3-none-any.whl", hash = "sha256:65cc83a3c82ce622d5c677d0d7706c77d29dc83958c6b10286e12fda6ffb2651", size = 397867, upload-time = "2026-01-29T18:20:39.481Z" },
 ]
 
+[package.optional-dependencies]
+bedrock = [
+    { name = "boto3" },
+    { name = "botocore" },
+]
+vertex = [
+    { name = "google-auth", extra = ["requests"] },
+]
+
 [[package]]
 name = "anyio"
 version = "4.12.1"
@@ -3939,7 +3948,7 @@ requires-dist = [
     { name = "pydantic-settings", specifier = ">=2.6.0" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "uipath", specifier = ">=2.6.22,<2.7.0" },
-    { name = "uipath-langchain-client", extras = ["all"], specifier = ">=1.0.0" },
+    { name = "uipath-langchain-client", extras = ["all"], specifier = ">=1.0.3" },
     { name = "uipath-runtime", specifier = ">=0.6.0,<0.7.0" },
 ]
 provides-extras = ["vertex", "bedrock"]
@@ -3962,19 +3971,20 @@ dev = [
 
 [[package]]
 name = "uipath-langchain-client"
-version = "1.0.0"
+version = "1.0.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "langchain" },
     { name = "uipath-llm-client" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/1f/bd/284e154098a78d168752302e26028e65008c782b8987a5d46d741d0b6b9f/uipath_langchain_client-1.0.0.tar.gz", hash = "sha256:a87ea11404b99d509c05ac157b8b6a68d3646bbbeee869f1eff9468fd213f0aa", size = 21151, upload-time = "2026-01-30T12:27:30.418Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/20/8e/7ffc3aceca0bd7f47ea2fd7a8cd9482d29549a2220f0ca04c9d6f6299e55/uipath_langchain_client-1.0.3.tar.gz", hash = "sha256:aaf114715e5131b920c770ffef2d0bd9b474932bb8a7bbc53f858fbd07882907", size = 20351, upload-time = "2026-02-03T07:26:38.722Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6a/bb/ef15ae383ce51e6320584b20932e3ac5fd44392cb5d05a6019f91d5047fe/uipath_langchain_client-1.0.0-py3-none-any.whl", hash = "sha256:2864c46802db544bd53499b52feca5939f62b0025a41e1ccf50f16fa9c5859c8", size = 28713, upload-time = "2026-01-30T12:27:32.332Z" },
+    { url = "https://files.pythonhosted.org/packages/51/cc/135fd1c04d284baa89eb1827d8250504db4431352e6a123f78073f92f832/uipath_langchain_client-1.0.3-py3-none-any.whl", hash = "sha256:fba8e6f725a7ba5436a66e4af32f7f5d810b5868fbf8f8650b273c66cc02e6f0", size = 27790, upload-time = "2026-02-03T07:26:39.558Z" },
 ]
 
 [package.optional-dependencies]
 all = [
+    { name = "anthropic", extra = ["bedrock", "vertex"] },
     { name = "langchain-anthropic" },
     { name = "langchain-aws" },
     { name = "langchain-azure-ai" },
@@ -3985,7 +3995,7 @@ all = [
 
 [[package]]
 name = "uipath-llm-client"
-version = "1.0.0"
+version = "1.0.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "httpx" },
@@ -3994,9 +4004,9 @@ dependencies = [
     { name = "tenacity" },
     { name = "uipath" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/fd/f1/7b3ce45904b7dc4d87b166b573a345fa50e915a9aa80e8ac9ce506a45280/uipath_llm_client-1.0.0.tar.gz", hash = "sha256:9bc030f3ca8fadc31654fb11c0c059ea62d90556730ae7621bedadf0c8e853b2", size = 370322, upload-time = "2026-01-30T12:25:52.739Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/19/15/32db8fba7ec4374555befaa08e7c47b718b05f562dd4bf32e58b3b1ff5b9/uipath_llm_client-1.0.3.tar.gz", hash = "sha256:f1f9df1b5bf3d69ecdacc837d07d18514cf125c3d4a40aa1889053c3be773d49", size = 370203, upload-time = "2026-02-02T18:25:00.472Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/3d/18/3d2db56d48f01e63430de9c0534d983ce74a77015538da4840b55bcf1ee2/uipath_llm_client-1.0.0-py3-none-any.whl", hash = "sha256:6102e3f65841fc1805ec7d63e4857430cfbeea7cfcea5cdb29c3017a9c8716e9", size = 34275, upload-time = "2026-01-30T12:25:51.28Z" },
+    { url = "https://files.pythonhosted.org/packages/dc/40/344fa8f64c96c7b2c1d51cf2d32ba0adbc72a3aabf0cd78fd3c5914589ca/uipath_llm_client-1.0.3-py3-none-any.whl", hash = "sha256:c840b9cbd3c55c8a4cd24d8ef08eee7d525605c662b690a976ac3bf180facfe0", size = 34836, upload-time = "2026-02-02T18:25:02.136Z" },
 ]
 
 [[package]]
