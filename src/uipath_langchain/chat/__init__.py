@@ -61,9 +61,15 @@ def __getattr__(name):
 
 
 __all__ = [
+    "UiPathBaseLLMClient",
     "UiPathChat",
     "UiPathAzureChatOpenAI",
     "UiPathChatOpenAI",
+    "UiPathChatBedrock",
+    "UiPathChatBedrockConverse",
+    "UiPathChatGoogleGenerativeAI",
+    "UiPathChatAnthropic",
+    "UiPathChatAnthropicVertex",
     "OpenAIModels",
     "BedrockModels",
     "GeminiModels",
