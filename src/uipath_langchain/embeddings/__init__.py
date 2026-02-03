@@ -13,6 +13,12 @@ Instead, all exports are loaded on-demand when first accessed.
 
 
 def __getattr__(name: str):
+    if name == "UiPathEmbeddings":
+        from uipath_langchain_client.clients.normalized import (
+            UiPathNormalizedEmbeddings,
+        )
+
+        return UiPathNormalizedEmbeddings
     if name == "UiPathAzureOpenAIEmbeddings":
         from uipath_langchain_client.clients.openai.embeddings import (
             UiPathAzureOpenAIEmbeddings,

@@ -18,9 +18,9 @@ def __getattr__(name):
 
         return UiPathBaseLLMClient
     if name == "UiPathChat":
-        from uipath_langchain_client.clients.openai import UiPathAzureChatOpenAI
+        from uipath_langchain_client.clients.normalized import UiPathNormalizedChatModel
 
-        return UiPathAzureChatOpenAI
+        return UiPathNormalizedChatModel
     if name == "UiPathAzureChatOpenAI":
         from uipath_langchain_client.clients.openai import UiPathAzureChatOpenAI
 

@@ -14,7 +14,7 @@ from mcp.client.streamable_http import streamablehttp_client
 from pydantic import BaseModel
 from uipath.platform import UiPath
 
-from uipath_langchain.chat import UiPathChatAnthropic
+from uipath_langchain.chat import UiPathChat
 
 dotenv.load_dotenv()
 
@@ -63,9 +63,7 @@ async def agent_mcp(access_token: str):
         async with ClientSession(read, write) as session:
             await session.initialize()
             tools = await load_mcp_tools(session)
-            model = UiPathChatAnthropic(
-                model="anthropic.claude-3-5-sonnet-20240620-v1:0"
-            )
+            model = UiPathChat(model="anthropic.claude-3-5-sonnet-20240620-v1:0")
             agent = create_agent(model, tools=tools)
             yield agent
 
