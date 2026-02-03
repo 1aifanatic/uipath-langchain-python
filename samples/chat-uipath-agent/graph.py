@@ -2,6 +2,7 @@ from langchain.agents import create_agent
 from langchain_community.tools import DuckDuckGoSearchResults
 
 from uipath_langchain.chat import UiPathChatOpenAI
+
 search_tool = DuckDuckGoSearchResults()
 
 movie_system_prompt = """You are an advanced AI assistant specializing in movie research and analysis. Your primary functions are:
