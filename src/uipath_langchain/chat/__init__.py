@@ -33,6 +33,26 @@ def __getattr__(name):
         from . import types
 
         return getattr(types, name)
+    if name == "UiPathChatBedrock":
+        from uipath_langchain_client.clients.bedrock import UiPathChatBedrock
+
+        return UiPathChatBedrock
+    if name == "UiPathChatBedrockConverse":
+        from uipath_langchain_client.clients.bedrock import UiPathChatBedrockConverse
+
+        return UiPathChatBedrockConverse
+    if name == "UiPathChatGoogleGenerativeAI":
+        from uipath_langchain_client.clients.google import UiPathChatGoogleGenerativeAI
+
+        return UiPathChatGoogleGenerativeAI
+    if name == "UiPathChatAnthropic":
+        from uipath_langchain_client.clients.anthropic import UiPathChatAnthropic
+
+        return UiPathChatAnthropic
+    if name == "UiPathChatAnthropicVertex":
+        from uipath_langchain_client.clients.vertexai import UiPathChatAnthropicVertex
+
+        return UiPathChatAnthropicVertex
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 
