@@ -22,7 +22,8 @@ from uipath.agent.models.agent import (
 )
 from uipath.core.guardrails.guardrails import FieldReference, FieldSource
 from uipath.platform.guardrails.guardrails import NumberParameterValue
-from uipath_langchain_client.clients.openai import UiPathAzureChatOpenAI
+
+from uipath_langchain.chat import UiPathAzureChatOpenAI
 
 
 # Mock Sentence Analyzer Tool
