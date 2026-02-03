@@ -14,6 +14,7 @@ from uipath._utils import resource_override
 from uipath._utils._ssl_context import get_httpx_client_kwargs
 from uipath.utils import EndpointManager
 
+from .helpers.helpers import add_uipath_request_metadata
 from .retryers.vertex import AsyncVertexRetryer, VertexRetryer
 from .supported_models import GeminiModels
 from .types import APIFlavor, LLMProvider
@@ -86,6 +87,9 @@ class _UrlRewriteTransport(httpx.HTTPTransport):
             # Update host header to match the new URL
             request.headers["host"] = new_url.host
             request.url = new_url
+
+        add_uipath_request_metadata(request)
+
         return super().handle_request(request)
 
 
@@ -108,6 +112,9 @@ class _AsyncUrlRewriteTransport(httpx.AsyncHTTPTransport):
             # Update host header to match the new URL
             request.headers["host"] = new_url.host
             request.url = new_url
+
+        add_uipath_request_metadata(request)
+
         return await super().handle_async_request(request)
 
 

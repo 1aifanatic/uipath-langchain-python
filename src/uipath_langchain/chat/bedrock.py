@@ -135,6 +135,27 @@ class AwsBedrockCompletionsPassthroughClient:
 
         request.headers.update(headers)
 
+        from uipath_langchain.chat.helpers import get_action_id
+
+        action_id = get_action_id()
+
+        if action_id:
+            request.headers["X-UiPath-LlmGateway-ActionId"] = action_id
+
+        if request.body:
+            import json
+
+            from uipath_langchain.chat.helpers import get_user_input
+
+            try:
+                body = json.loads(request.body)
+                body["user_input"] = get_user_input()
+                new_body = json.dumps(body).encode("utf-8")
+                request.body = new_body
+                request.headers["Content-Length"] = str(len(new_body))
+            except (json.JSONDecodeError, ValueError, AttributeError):
+                pass
+
 
 class UiPathChatBedrockConverse(ChatBedrockConverse):
     llm_provider: LLMProvider = LLMProvider.BEDROCK
